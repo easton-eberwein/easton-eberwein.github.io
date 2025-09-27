@@ -1,195 +1,341 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Projects — Easton Eberwein</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>All Projects — Easton Eberwein</title>
 
-  <!-- Tailwind (CDN) -->
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+
+  <!-- Tailwind + AOS + Feather -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- AOS (scroll animations) -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 
-  <!-- Feather icons -->
-  <script defer src="https://unpkg.com/feather-icons"></script>
-
-  <!-- Minimal custom styles -->
-    <style>
-        .section-divider { height:2px; background:linear-gradient(to right,transparent,#10b981,transparent); }
-        .project-card { transition: transform 200ms ease, box-shadow 200ms ease; }
-        .project-card:hover { transform: translateY(-4px); box-shadow:0 10px 24px rgba(0,0,0,.35); }
-        .tile { display:flex; flex-direction:column; height:100%; }
-        .tile-body { flex:1 1 auto; }
-        /* headings a hair lighter for hierarchy */
-        h1,h2,h3 { letter-spacing:-0.01em; }
-    </style>
-
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background:#0a0a0a; color:#f3f3f3; }
+    ::-webkit-scrollbar{ width:8px } ::-webkit-scrollbar-track{ background:#1a1a1a }
+    ::-webkit-scrollbar-thumb{ background:#333; border-radius:4px } ::-webkit-scrollbar-thumb:hover{ background:#444 }
+    .section-divider{ height:1px; background:linear-gradient(90deg,transparent,rgba(100,100,100,.5),transparent) }
+    .project-card:hover{ transform:translateY(-8px); box-shadow:0 20px 25px -5px rgba(0,0,0,.3),0 10px 10px -5px rgba(0,0,0,.1) }
+  </style>
 </head>
 
-<body class="bg-gray-900 text-white">
-  <!-- Header -->
-  <header class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex items-center justify-between">
-    <a href="/" class="text-2xl font-bold tracking-tight">EASTON</a>
-    <nav class="space-x-6 text-gray-300">
-      <a href="/#about" class="hover:text-white">About</a>
-      <a href="/#experience" class="hover:text-white">Experience</a>
-      <a href="/projects.html" class="text-emerald-400">Projects</a>
-      <a href="/#contact" class="hover:text-white">Contact</a>
-    </nav>
-  </header>
+<body class="antialiased">
+  <!-- NAV (matches index) -->
+  <nav class="fixed w-full z-50 bg-black/80 backdrop-blur-sm border-b border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="/" class="flex items-center space-x-2">
+          <span class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400">Easton Eberwein</span>
+        </a>
+        <div class="hidden md:block">
+          <div class="ml-10 flex items-baseline space-x-8">
+            <a href="/#about" class="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors">About</a>
+            <a href="/#experience" class="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors">Experience</a>
+            <a href="/#projects" class="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors">Featured</a>
+            <a href="/#resume" class="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors">Resume</a>
+            <a href="/#contact" class="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors">Contact</a>
+          </div>
+        </div>
+        <button id="mobile-menu-button" class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700">
+          <i data-feather="menu"></i>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-black/95">
+        <a href="/#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">About</a>
+        <a href="/#experience" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">Experience</a>
+        <a href="/#projects" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">Featured</a>
+        <a href="/#resume" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">Resume</a>
+        <a href="/#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">Contact</a>
+      </div>
+    </div>
+  </nav>
 
-  <!-- Main -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-2 pb-24">
-    <!-- Page intro -->
-    <section class="text-center mb-12">
-      <h1 class="text-3xl md:text-4xl font-bold mb-4" data-aos="fade-up">All Projects</h1>
+  <div id="top"></div>
+
+  <!-- PAGE HEADER -->
+  <header class="pt-28 pb-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-3xl md:text-4xl font-bold" data-aos="fade-up">All Projects</h1>
       <div class="section-divider w-24 mx-auto my-6" data-aos="fade-up" data-aos-delay="100"></div>
       <p class="text-gray-400 max-w-2xl mx-auto text-lg" data-aos="fade-up" data-aos-delay="150">
-        These projects reflect the different sides of my work—combining my technical skills in data science and development
-        with leadership experience in team and client-driven environments. Each represents a challenge where I grew as both
-        a problem solver and collaborator.
+        A fuller set of my work spanning data, analytics, research, and leadership. Click through for code, write-ups, or slide decks.
       </p>
-    </section>
-
-    <!-- Highlights (link back to homepage projects) -->
-   <section class="mb-10">
-  <h2 class="text-2xl font-semibold mb-6">Highlights</h2>
-  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-    <!-- Olympic Insights -->
-    <div class="project-card rounded-xl border border-gray-700 bg-gray-800 p-6">
-      <div class="flex items-center justify-between mb-2">
-        <h3 class="text-xl font-bold">Olympic Insights</h3>
-        <span class="px-2 py-1 rounded text-xs font-medium bg-emerald-900 text-emerald-300">Deep Learning</span>
+      <div class="mt-6">
+        <a href="/#projects" class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 text-sm font-medium">
+          Back to homepage
+          <i data-feather="arrow-left" class="w-4 h-4"></i>
+        </a>
       </div>
-      <p class="text-gray-400 text-sm">
-        Neural network predicting Olympic medal outcomes (85.91% accuracy). Presented at CURSCA 2025.
-      </p>
-      <a href="https://github.com/easton-eberwein/deep-learners-olympics" target="_blank"
-         class="mt-4 inline-flex items-center text-sm text-emerald-400 hover:text-emerald-300">
-        Open <i data-feather="arrow-right" class="ml-1 w-4 h-4"></i>
-      </a>
     </div>
+  </header>
 
-    <!-- MUCG Capstone -->
-    <div class="project-card rounded-xl border border-gray-700 bg-gray-800 p-6">
-      <div class="flex items-center justify-between mb-2">
-        <h3 class="text-xl font-bold">MUCG Capstone</h3>
-        <span class="px-2 py-1 rounded text-xs font-medium bg-emerald-900 text-emerald-300">Capstone</span>
-      </div>
-      <p class="text-gray-400 text-sm">
-        Designed a grad consulting group; pitched to the Dean and secured funding to launch the initiative.
-      </p>
-      <a href="https://maristcollege-my.sharepoint.com/:p:/r/personal/easton_eberwein1_marist_edu/_layouts/15/Doc.aspx?sourcedoc=%7BFF995216-4DD5-4886-A84F-CA281DEEE515%7D&file=Marist_Graduate_Consultancy_Proposal%20-%20Copy.pptx&action=edit&mobileredirect=true&DefaultItemOpen=1"
-         target="_blank" class="mt-4 inline-flex items-center text-sm text-emerald-400 hover:text-emerald-300">
-        Open <i data-feather="arrow-right" class="ml-1 w-4 h-4"></i>
-      </a>
-    </div>
+  <!-- FILTERS -->
+  <div class="sticky top-16 z-40 bg-[#0a0a0a]/90 backdrop-blur border-b border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="py-4 flex flex-wrap gap-2">
+        <button type="button" data-filter="all"
+            class="filter-btn inline-flex items-center px-3 py-1.5 rounded-full text-sm
+                 border border-emerald-500/30 text-emerald-300
+                 hover:text-white hover:bg-emerald-500/10 transition"
+            aria-pressed="true">All</button>
 
-    <!-- Telecom API -->
-    <div class="project-card rounded-xl border border-gray-700 bg-gray-800 p-6">
-      <div class="flex items-center justify-between mb-2">
-        <h3 class="text-xl font-bold">Telecom API Project</h3>
-        <span class="px-2 py-1 rounded text-xs font-medium bg-emerald-900 text-emerald-300">Industry</span>
+        <button type="button" data-filter="deep-learning"
+            class="filter-btn inline-flex items-center px-3 py-1.5 rounded-full text-sm
+                 border border-emerald-500/30 text-emerald-300
+                 hover:text-white hover:bg-emerald-500/10 transition">Deep Learning</button>
+
+        <button type="button" data-filter="capstone"
+            class="filter-btn inline-flex items-center px-3 py-1.5 rounded-full text-sm
+                 border border-emerald-500/30 text-emerald-300
+                 hover:text-white hover:bg-emerald-500/10 transition">Capstone</button>
+
+        <button type="button" data-filter="industry"
+            class="filter-btn inline-flex items-center px-3 py-1.5 rounded-full text-sm
+                 border border-emerald-500/30 text-emerald-300
+                 hover:text-white hover:bg-emerald-500/10 transition">Industry</button>
+
+        <button type="button" data-filter="research"
+            class="filter-btn inline-flex items-center px-3 py-1.5 rounded-full text-sm
+                border border-emerald-500/30 text-emerald-300
+                hover:text-white hover:bg-emerald-500/10 transition">Research</button>
+
+
+        <!-- Future-friendly filters -->
+        <button type="button" data-filter="repo"
+          class="filter-btn inline-flex items-center px-3 py-1.5 rounded-full text-sm
+                 border border-emerald-500/30 text-emerald-300
+                 hover:text-white hover:bg-emerald-500/10 transition">Repo</button>
+        <button type="button" data-filter="power-bi"
+          class="filter-btn inline-flex items-center px-3 py-1.5 rounded-full text-sm
+                 border border-emerald-500/30 text-emerald-300
+                 hover:text-white hover:bg-emerald-500/10 transition">Power BI</button>
       </div>
-      <p class="text-gray-400 text-sm">
-        PM for a 5-person team delivering a production API for IP address management at a telecom client.
-      </p>
-      <a href="https://github.com/easton-eberwein/UndergraduateCapping" target="_blank"
-         class="mt-4 inline-flex items-center text-sm text-emerald-400 hover:text-emerald-300">
-        Open <i data-feather="arrow-right" class="ml-1 w-4 h-4"></i>
-      </a>
     </div>
   </div>
-</section>
 
-    <!-- Secondary projects / repos -->
-    <section>
-      <h2 class="text-2xl font-semibold mb-6">More Projects & Repos</h2>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- BI project placeholder -->
-        <div class="tile rounded-xl border border-gray-700 bg-gray-800 p-6">
-          <div class="tile-body">
-            <div class="flex items-center justify-between mb-2">
-              <h3 class="text-lg font-semibold">Sports Performance BI</h3>
-              <span class="px-2 py-1 rounded text-xs font-medium bg-gray-700 text-gray-300">Power BI</span>
-            </div>
-            <p class="text-gray-400 text-sm">
-              Public dataset dashboards exploring athlete trends and performance KPIs. (Screenshots & write-up coming.)
-            </p>
-            <div class="mt-4 flex flex-wrap gap-2">
-              <span class="px-2 py-1 rounded text-xs font-medium bg-gray-700 text-gray-300">DAX</span>
-              <span class="px-2 py-1 rounded text-xs font-medium bg-gray-700 text-gray-300">Data Viz</span>
-            </div>
+  <!-- PROJECTS GRID -->
+  <main class="pb-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <!-- Olympic Insights -->
+        <article
+          class="project-item project-card rounded-xl overflow-hidden border border-gray-700 bg-gray-800 transition-all duration-300 ease-in-out"
+          data-tags="deep-learning,python,data-science,repo"
+          data-aos="fade-up" data-aos-delay="50">
+          <div class="relative overflow-hidden">
+            <img src="assets/olympics.avif" alt="Starting blocks on a track" class="w-full h-48 object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
           </div>
-          <a href="#" class="mt-4 inline-flex items-center text-sm text-emerald-400 hover:text-emerald-300">Preview soon
-            <i data-feather="arrow-right" class="ml-1 w-4 h-4"></i></a>
-        </div>
-
-        <!-- Capping repo -->
-        <div class="tile rounded-xl border border-gray-700 bg-gray-800 p-6">
-          <div class="tile-body">
-            <div class="flex items-center justify-between mb-2">
-              <h3 class="text-lg font-semibold">Undergraduate Capping (API)</h3>
-              <span class="px-2 py-1 rounded text-xs font-medium bg-gray-700 text-gray-300">Repo</span>
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-2">
+              <h3 class="text-xl font-bold">Olympic Insights</h3>
+              <span class="px-2 py-1 rounded text-xs font-medium bg-emerald-900 text-emerald-300">Deep Learning</span>
             </div>
-            <p class="text-gray-400 text-sm">
-              Production API for IP address management delivered to a telecom client. Role: project manager & client liaison.
+            <p class="text-gray-400 text-sm mb-4">
+            Explored how deep learning can analyze Olympic history by predicting medal outcomes from athlete data. As part of a team, designed and trained a neural network that reached 85.91% accuracy, with our findings presented at CURSCA 2025. This project highlights both technical skill and the intersection of data science with athletics.
             </p>
-            <div class="mt-4 flex flex-wrap gap-2">
-              <span class="px-2 py-1 rounded text-xs font-medium bg-gray-700 text-gray-300">API</span>
-              <span class="px-2 py-1 rounded text-xs font-medium bg-gray-700 text-gray-300">PM</span>
-            </div>
-          </div>
-          <a href="https://github.com/easton-eberwein/UndergraduateCapping" target="_blank"
-             class="mt-4 inline-flex items-center text-sm text-emerald-400 hover:text-emerald-300">View code
-            <i data-feather="arrow-right" class="ml-1 w-4 h-4"></i></a>
-        </div>
-
-        <!-- Olympic repo -->
-        <div class="tile rounded-xl border border-gray-700 bg-gray-800 p-6">
-          <div class="tile-body">
-            <div class="flex items-center justify-between mb-2">
-              <h3 class="text-lg font-semibold">Olympic Insights (Repo)</h3>
-              <span class="px-2 py-1 rounded text-xs font-medium bg-gray-700 text-gray-300">Repo</span>
-            </div>
-            <p class="text-gray-400 text-sm">
-              Deep learning model predicting medal outcomes (85.91% accuracy). Presented at CURSCA 2025.
-            </p>
-            <div class="mt-4 flex flex-wrap gap-2">
+            <div class="flex flex-wrap gap-2 mb-4">
               <span class="px-2 py-1 rounded text-xs font-medium bg-gray-700 text-gray-300">Python</span>
-              <span class="px-2 py-1 rounded text-xs font-medium bg-gray-700 text-gray-300">DL</span>
+              <span class="px-2 py-1 rounded text-xs font-medium bg-gray-700 text-gray-300">Deep Learning</span>
+              <span class="px-2 py-1 rounded text-xs font-medium bg-gray-700 text-gray-300">Data Analysis</span>
             </div>
+            <a href="https://github.com/easton-eberwein/deep-learners-olympics" target="_blank" rel="noopener"
+               class="inline-flex items-center text-sm font-medium text-emerald-400 hover:text-emerald-300">
+              View repo <i data-feather="arrow-right" class="ml-1 w-4 h-4"></i>
+            </a>
           </div>
-          <a href="https://github.com/easton-eberwein/deep-learners-olympics" target="_blank"
-             class="mt-4 inline-flex items-center text-sm text-emerald-400 hover:text-emerald-300">View repo
-            <i data-feather="arrow-right" class="ml-1 w-4 h-4"></i></a>
+        </article>
+
+        <!-- MUCG Capstone -->
+        <article
+          class="project-item project-card rounded-xl overflow-hidden border border-gray-700 bg-gray-800 transition-all duration-300 ease-in-out"
+          data-tags="capstone,strategy,presentation"
+          data-aos="fade-up" data-aos-delay="100">
+          <div class="relative overflow-hidden">
+            <img src="assets/marist.jpg" alt="Marist campus at sunset" class="w-full h-48 object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+          </div>
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-2">
+              <h3 class="text-xl font-bold">Marist University Consulting Group (MUCG)</h3>
+              <span class="px-2 py-1 rounded text-xs font-medium bg-emerald-900 text-emerald-300">Capstone</span>
+            </div>
+            <p class="text-gray-400 text-sm mb-4">
+            Semester-long consulting project to design a graduate student consulting group. Led stakeholder research and business planning, then served as the closing presenter to pitch the proposal to the Dean—securing approval and funding to launch the initiative.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-2 py-1 rounded text-xs font-medium bg-gray-700 text-gray-300">Strategic Planning</span>
+              <span class="px-2 py-1 rounded text-xs font-medium bg-gray-700 text-gray-300">Presentation</span>
+              <span class="px-2 py-1 rounded text-xs font-medium bg-gray-700 text-gray-300">Stakeholder Engagement</span>
+              <span class="px-2 py-1 rounded text-xs font-medium bg-gray-700 text-gray-300">Leadership</span>
+            </div>
+            <a href="https://maristcollege-my.sharepoint.com/:p:/g/personal/easton_eberwein1_marist_edu/ERZSmf_VTYZIqE_KKB3u5RUBHaUB7FUn_J4a2Z3y9viQGQ?e=Q3uoan"
+               target="_blank" rel="noopener"
+               class="inline-flex items-center text-sm font-medium text-emerald-400 hover:text-emerald-300">
+              View slide deck <i data-feather="arrow-right" class="ml-1 w-4 h-4"></i>
+            </a>
+          </div>
+        </article>
+
+        <!-- Telecom API -->
+        <article
+            class="project-item project-card rounded-xl overflow-hidden border border-gray-700 bg-gray-800 transition-all duration-300 ease-in-out"
+            data-tags="capstone,industry,api,client-delivery,team-lead,repo"
+            data-aos="fade-up" data-aos-delay="150">
+            <div class="relative overflow-hidden">
+                <img src="assets/API.avif" alt="Code and network imagery" class="w-full h-48 object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+            </div>
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xl font-bold">Telecom API Project</h3>
+                <span class="px-2 py-1 rounded text-xs font-medium bg-emerald-900 text-emerald-300">Capstone</span>
+                </div>
+                <p class="text-gray-400 text-sm mb-4">
+                Served as project manager on a team of five to deliver a production-ready API for GTel which was acquired by Archtop Fiber.
+                The system enabled adding, updating, and deleting IP addresses to streamline network operations. 
+                Coordinated client communication, led sprint planning, and ensured delivery of the final product.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                <span class="px-2 py-1 rounded text-xs font-medium bg-gray-700 text-gray-300">Project Management</span>
+                <span class="px-2 py-1 rounded text-xs font-medium bg-gray-700 text-gray-300">API Development</span>
+                <span class="px-2 py-1 rounded text-xs font-medium bg-gray-700 text-gray-300">Team Collaboration</span>
+                <span class="px-2 py-1 rounded text-xs font-medium bg-gray-700 text-gray-300">Client Delivery</span>
+                </div>
+                <a href="https://github.com/easton-eberwein/UndergraduateCapping" target="_blank" rel="noopener"
+                class="inline-flex items-center text-sm font-medium text-emerald-400 hover:text-emerald-300">
+                View repo <i data-feather="arrow-right" class="ml-1 w-4 h-4"></i>
+                </a>
+            </div>
+        </article>
+
+        <!-- Honors Thesis (Research) -->
+        <article
+        class="project-item project-card rounded-xl overflow-hidden border border-gray-700 bg-gray-800 transition-all duration-300 ease-in-out"
+        data-tags="research,athletics,ethics,qualitative,writing"
+        data-aos="fade-up" data-aos-delay="200">
+        <div class="relative overflow-hidden">
+            <!-- use a relevant image you add to /assets (e.g., thesis.jpg) -->
+            <img src="assets/thesis.jpg" alt="Notebook, track spikes, and a highlighted research outline"
+                class="w-full h-48 object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
         </div>
+        <div class="p-6">
+            <div class="flex justify-between items-start mb-2">
+            <h3 class="text-xl font-bold">Track & Field Performance Enhancer Perceptions</h3>
+            <span class="px-2 py-1 rounded text-xs font-medium bg-emerald-900 text-emerald-300">Research</span>
+            </div>
+            <p class="text-gray-400 text-sm mb-4">
+            Honors thesis using semi-structured interviews with 15 track & field athletes, showing performance enhancement extends beyond substances to sleep, nutrition, equipment, and amateurism—anything that confers a legitimate competitive edge.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-4">
+            <span class="px-2 py-1 rounded text-xs font-medium bg-gray-700 text-gray-300">Qualitative Interviews</span>
+            <span class="px-2 py-1 rounded text-xs font-medium bg-gray-700 text-gray-300">Data Collection</span>
+            <span class="px-2 py-1 rounded text-xs font-medium bg-gray-700 text-gray-300">Data Storytelling</span>
+            <span class="px-2 py-1 rounded text-xs font-medium bg-gray-700 text-gray-300">Presentation</span>
+            </div>
+            <!-- Update href once you add your PDF to /assets -->
+            <a href="assets/Easton Eberwein Final Thesis Paper.pdf" target="_blank" rel="noopener"
+            class="inline-flex items-center text-sm font-medium text-emerald-400 hover:text-emerald-300">
+            View paper <i data-feather="arrow-right" class="ml-1 w-4 h-4"></i>
+            </a>
+        </div>
+        </article>
+
       </div>
-    </section>
+
+      <!-- Back to top -->
+      <div class="mt-16 flex justify-center">
+        <a href="#top"
+           class="group inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-medium text-emerald-300
+                  border border-emerald-500/30 hover:text-white hover:bg-gradient-to-r hover:from-emerald-500 hover:to-cyan-500
+                  focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/60 transition">
+          Back to top
+          <i data-feather="arrow-up" class="w-4 h-4 transition-transform duration-200 group-hover:-translate-y-0.5"></i>
+        </a>
+      </div>
+
+    </div>
   </main>
 
-  <!-- Footer -->
-  <footer class="py-8 text-center text-gray-500">
-    <div class="flex justify-center space-x-6">
-      <a href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank" class="hover:text-white">
-        <i data-feather="linkedin" class="w-5 h-5"></i></a>
-      <a href="https://github.com/YOUR_GITHUB" target="_blank" class="hover:text-white">
-        <i data-feather="github" class="w-5 h-5"></i></a>
-      <a href="https://twitter.com/YOUR_TWITTER" target="_blank" class="hover:text-white">
-        <i data-feather="twitter" class="w-5 h-5"></i></a>
-      <a href="https://www.instagram.com/YOUR_INSTAGRAM" target="_blank" class="hover:text-white">
-        <i data-feather="instagram" class="w-5 h-5"></i></a>
+  <!-- FOOTER -->
+  <footer class="bg-gray-900 py-10 border-t border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="flex justify-center space-x-6">
+        <a href="https://github.com/easton-eberwein" class="text-gray-400 hover:text-emerald-400"><i data-feather="github" class="w-5 h-5"></i></a>
+        <a href="https://linkedin.com/in/eastoneberwein" class="text-gray-400 hover:text-emerald-400"><i data-feather="linkedin" class="w-5 h-5"></i></a>
+        <a href="https://x.com/Easton_Eberwein" class="text-gray-400 hover:text-emerald-400"><i data-feather="twitter" class="w-5 h-5"></i></a>
+        <a href="https://www.instagram.com/easton_eberwein/" class="text-gray-400 hover:text-emerald-400"><i data-feather="instagram" class="w-5 h-5"></i></a>
+      </div>
+      <p class="mt-4 text-gray-500 text-sm">© <span id="year"></span> Easton Eberwein. All rights reserved.</p>
     </div>
-    <p class="mt-4 text-sm">&copy; <span id="year"></span> Easton Eberwein</p>
   </footer>
 
-  <!-- Scripts -->
   <script>
+    // AOS + Feather
+    AOS.init({ once:true, duration:800, easing:'ease-out-quart' });
     feather.replace();
-    AOS.init();
-    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile nav
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+      document.querySelectorAll('#mobile-menu a').forEach(a =>
+        a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+    }
+
+    // Footer year
+    const y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
+
+    // ------- Filters -------
+    const cards   = Array.from(document.querySelectorAll('.project-item'));
+    const buttons = Array.from(document.querySelectorAll('.filter-btn'));
+
+    function setActive(btn) {
+      buttons.forEach(b => {
+        b.setAttribute('aria-pressed', String(b === btn));
+        if (b === btn) {
+          b.classList.add('text-white','bg-gradient-to-r','from-emerald-500','to-cyan-500','border-transparent');
+          b.classList.remove('text-emerald-300','hover:bg-emerald-500/10','border-emerald-500/30');
+        } else {
+          b.classList.remove('text-white','bg-gradient-to-r','from-emerald-500','to-cyan-500','border-transparent');
+          b.classList.add('text-emerald-300','hover:bg-emerald-500/10','border-emerald-500/30');
+        }
+      });
+    }
+
+    function applyFilter(value) {
+      const v = (value || 'all').toLowerCase();
+      cards.forEach(card => {
+        const tags = (card.dataset.tags || '').toLowerCase().split(',').map(s => s.trim());
+        const show = (v === 'all') || tags.includes(v);
+        card.classList.toggle('hidden', !show);
+      });
+    }
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        setActive(btn);
+        applyFilter(btn.dataset.filter);
+      });
+    });
+
+    // Initialize by URL (?t=capstone) or default to "all"
+    const urlType = new URLSearchParams(location.search).get('t');
+    const initial = buttons.find(b => b.dataset.filter === (urlType || 'all')) || buttons[0];
+    setActive(initial);
+    applyFilter(initial.dataset.filter);
   </script>
 </body>
 </html>
