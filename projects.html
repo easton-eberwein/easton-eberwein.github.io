@@ -97,26 +97,21 @@
                  border border-emerald-500/30 text-emerald-300
                  hover:text-white hover:bg-emerald-500/10 transition">Capstone</button>
 
-        <button type="button" data-filter="industry"
+        <button type="button" data-filter="python"
             class="filter-btn inline-flex items-center px-3 py-1.5 rounded-full text-sm
                  border border-emerald-500/30 text-emerald-300
-                 hover:text-white hover:bg-emerald-500/10 transition">Industry</button>
+                 hover:text-white hover:bg-emerald-500/10 transition">Python</button>
 
         <button type="button" data-filter="research"
             class="filter-btn inline-flex items-center px-3 py-1.5 rounded-full text-sm
                 border border-emerald-500/30 text-emerald-300
                 hover:text-white hover:bg-emerald-500/10 transition">Research</button>
 
+        <button type="button" data-filter="data-visualization"
+            class="filter-btn inline-flex items-center px-3 py-1.5 rounded-full text-sm
+                border border-emerald-500/30 text-emerald-300
+                hover:text-white hover:bg-emerald-500/10 transition">Data Visualization</button>
 
-        <!-- Future-friendly filters -->
-        <button type="button" data-filter="repo"
-          class="filter-btn inline-flex items-center px-3 py-1.5 rounded-full text-sm
-                 border border-emerald-500/30 text-emerald-300
-                 hover:text-white hover:bg-emerald-500/10 transition">Repo</button>
-        <button type="button" data-filter="power-bi"
-          class="filter-btn inline-flex items-center px-3 py-1.5 rounded-full text-sm
-                 border border-emerald-500/30 text-emerald-300
-                 hover:text-white hover:bg-emerald-500/10 transition">Power BI</button>
       </div>
     </div>
   </div>
@@ -127,10 +122,57 @@
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
+        <!-- Garmin Tableau -->
+        <article
+          class="project-item project-card rounded-xl overflow-hidden border border-gray-700 bg-gray-800 transition-all duration-300 ease-in-out"
+          data-tags="data-visualization,python,etl,biometrics"
+          data-aos="fade-up" data-aos-delay="50">
+          <div class="relative overflow-hidden">
+            <img src="assets/garmin.jpg" alt="Starting blocks on a track" class="w-full h-48 object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+          </div>
+
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-2">
+              <h3 class="text-xl font-bold">Garmin Data in Tableau</h3>
+              <span class="px-2 py-1 rounded text-xs font-medium bg-emerald-900 text-emerald-300">Tableau</span>
+            </div>
+
+            <p class="text-gray-400 text-sm mb-4">
+              Converted Garmin Connect exports into a Tableau health dashboard. Parsed data with Python to SQLite/CSVs and visualized a fixed 99-day snapshot highlighting sleep stages, steps/calories, and RHR–stress trends—showcasing practical ETL and athlete-focused analytics. Built a repeatable publishing flow and linked the Tableau Public view for easy sharing.</p>
+
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-2 py-1 rounded text-xs font-medium bg-gray-700 text-gray-300">Data Visualization</span>
+              <span class="px-2 py-1 rounded text-xs font-medium bg-gray-700 text-gray-300">ETL</span>
+              <span class="px-2 py-1 rounded text-xs font-medium bg-gray-700 text-gray-300">Python</span>
+              <span class="px-2 py-1 rounded text-xs font-medium bg-gray-700 text-gray-300">Biometrics</span>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-3">
+              <a
+                href="https://public.tableau.com/views/GarminVisualization/GarminWellness?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link"
+                target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center text-sm font-medium text-emerald-400 hover:text-emerald-300">
+                View Dashboard
+                <i data-feather="arrow-right" class="ml-1 w-4 h-4"></i>
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/eastoneberwein/"
+                target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center text-sm font-medium text-gray-300 hover:text-gray-200">
+                Read LinkedIn Post
+                <i data-feather="external-link" class="ml-1 w-4 h-4"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+
+
         <!-- Olympic Insights -->
         <article
           class="project-item project-card rounded-xl overflow-hidden border border-gray-700 bg-gray-800 transition-all duration-300 ease-in-out"
-          data-tags="deep-learning,python,data-science,repo"
+          data-tags="deep-learning,python,research"
           data-aos="fade-up" data-aos-delay="50">
           <div class="relative overflow-hidden">
             <img src="assets/olympics.avif" alt="Starting blocks on a track" class="w-full h-48 object-cover">
@@ -159,7 +201,7 @@
         <!-- MUCG Capstone -->
         <article
           class="project-item project-card rounded-xl overflow-hidden border border-gray-700 bg-gray-800 transition-all duration-300 ease-in-out"
-          data-tags="capstone,strategy,presentation"
+          data-tags="research,capstone"
           data-aos="fade-up" data-aos-delay="100">
           <div class="relative overflow-hidden">
             <img src="assets/marist.jpg" alt="Marist campus at sunset" class="w-full h-48 object-cover">
@@ -190,7 +232,7 @@
         <!-- Telecom API -->
         <article
             class="project-item project-card rounded-xl overflow-hidden border border-gray-700 bg-gray-800 transition-all duration-300 ease-in-out"
-            data-tags="capstone,industry,api,client-delivery,team-lead,repo"
+            data-tags="capstone,research"
             data-aos="fade-up" data-aos-delay="150">
             <div class="relative overflow-hidden">
                 <img src="assets/API.avif" alt="Code and network imagery" class="w-full h-48 object-cover">
@@ -222,7 +264,7 @@
         <!-- Honors Thesis (Research) -->
         <article
         class="project-item project-card rounded-xl overflow-hidden border border-gray-700 bg-gray-800 transition-all duration-300 ease-in-out"
-        data-tags="research,athletics,ethics,qualitative,writing"
+        data-tags="research"
         data-aos="fade-up" data-aos-delay="200">
         <div class="relative overflow-hidden">
             <!-- use a relevant image you add to /assets (e.g., thesis.jpg) -->
